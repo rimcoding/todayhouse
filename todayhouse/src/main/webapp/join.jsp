@@ -13,14 +13,17 @@ align-items: center;
 flex-direction: column;
 }
 .form-group{
+margin-top: 30px;
+display: flex;
 justify-content: center;
 align-items: center;
+flex-direction: column;
 }
 
 .text{
- width: 200px;
+ display: flex;
  height: 30px;
- margin-top: 10px;
+ width: 250px;
 }
 
 .item2{
@@ -42,9 +45,9 @@ align-items: center;
 	<div class = "container">
 	<img alt="" src="images/loginlogo2.png">
 	<div class="form-group">
-	<label for="TEXT">이메일 : </label><input type="email" placeholder="이메일을 입력하세요"  name="email" id = "email" class = "text"><br>
-	<label for="TEXT">비밀번호 : </label><input type="password" placeholder="패스워드를 입력하세요"  name="password" id="password" class = "text"><br>
-	<label for="TEXT">닉네임 : </label><input type="text" placeholder="닉네임을 입력하세요"  name="nickname" id = "nickname" class = "text"><br>
+	<input type="email" placeholder="이메일을 입력하세요"  name="email" id = "email" class = "text">
+	<input type="password" placeholder="패스워드를 입력하세요"  name="password" id="password" class = "text">
+	<input type="text" placeholder="닉네임을 입력하세요"  name="nickname" id = "nickname" class = "text">
 	<button class="item2">회원가입</button>
 	</div>
 	</div>
