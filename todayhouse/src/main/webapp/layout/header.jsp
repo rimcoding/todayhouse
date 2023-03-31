@@ -93,7 +93,7 @@ font-size: 14px;
 </li>
 </ul>
 </div>
-<button class="writebtn" onclick="location.href='board.jsp' ">글쓰기</button>
+<button class="writebtn" onclick="location.href='border/border.jsp' ">글쓰기</button>
 </div>
 </header>
 </body>
