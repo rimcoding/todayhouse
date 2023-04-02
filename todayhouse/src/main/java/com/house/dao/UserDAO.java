@@ -1,6 +1,7 @@
 package com.house.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +26,7 @@ public class UserDAO implements IUserDAO {
 		String query = "  INSERT INTO user(email,password,nickname) "
 				+ "    VALUES "
 				+ " ( ? , ? , ? ) ";
-		
+		System.out.println("사진업로드가 안된다.");
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, email);
@@ -39,26 +40,31 @@ public class UserDAO implements IUserDAO {
 		return resultrow;
 	}
 	@Override
-	public void login(String email, int password) {
+	public UserDTO login(UserDTO dto) {
 		
-		System.out.println("111111111111111");
+		UserDTO resultUser = null;
+		
 		String query = " SELECT * FROM user "
 				+ "    WHERE email = ? AND password = ? ";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, email);
-			pstmt.setInt(2, password);
+			pstmt.setString(1,dto.getEmail());
+			pstmt.setInt(2,dto.getPassword());
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				UserDTO dto = new UserDTO(email, password);
-				dto.setEmail(rs.getString("email"));
-				dto.setPassword(rs.getInt("password"));
+				UserDTO user = new UserDTO();
+				user.setId(rs.getInt("id"));
+				user.setEmail(rs.getString("email"));
+				user.setNickname(rs.getString("nickname"));
+				resultUser = user;
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return resultUser;
 	}
 
 }

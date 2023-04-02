@@ -10,7 +10,23 @@ public class PhotoDTO {
 	private int readCount;
 	private int favorite;
 	private Timestamp createDate;
+	private String nickname;
 	
+	
+	
+	@Override
+	public String toString() {
+		return "PhotoDTO [id=" + id + ", userId=" + userId + ", photoImage=" + photoImage + ", content=" + content
+				+ ", readCount=" + readCount + ", favorite=" + favorite + ", createDate=" + createDate + ", nickname="
+				+ nickname + "]";
+	}
+	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public int getId() {
 		return id;
 	}

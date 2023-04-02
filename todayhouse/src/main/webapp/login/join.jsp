@@ -6,31 +6,26 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-*{
-margin: 0;
-}
-container{
-display: flex;
-}
-.logo{
+.container{
 display: flex;
 justify-content: center;
 align-items: center;
+flex-direction: column;
 }
-.text{
+.form-group{
 margin-top: 30px;
 display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
 }
-.text1{
- width: 200px;
+
+.text{
+ display: flex;
  height: 30px;
+ width: 250px;
 }
-.button{
-margin-top: 20px;
-}
+
 .item2{
 	margin-top: 20px;
 	justify-content: center;
@@ -42,20 +37,20 @@ margin-top: 20px;
 	outline: 0;
 	border: 0;
 }
+
 </style>
 </head>
 <body>
-	<form action="LoginProgram" method="post">
+<form action="/JoinProgram" method="post">
 	<div class = "container">
-	<div class = "logo">
-	<img alt="" src="images/loginlogo2.png">
+	<img src="/image2/loginlogo.png">
+	<div class="form-group">
+	<input type="email" placeholder="이메일을 입력하세요"  name="email" id = "email" class = "text">
+	<input type="password" placeholder="패스워드를 입력하세요"  name="password" id="password" class = "text">
+	<input type="text" placeholder="닉네임을 입력하세요"  name="nickname" id = "nickname" class = "text">
+	<button class="item2">회원가입</button>
 	</div>
-	<div class = text>
-	<input type = "email" placeholder="이메일" name = "email" id ="email" class="text1">
-	<input type = "password" placeholder="비밀번호" name = "password" id = "password" class = "text1">
-	<button class="item2">로그인</button>
 	</div>
-	</div>
-	</form>
+</form>
 </body>
 </html>

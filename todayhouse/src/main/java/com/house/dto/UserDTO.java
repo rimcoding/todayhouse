@@ -2,6 +2,7 @@ package com.house.dto;
 
 public class UserDTO {
 	
+	private int id;
 	private String email;
 	private int password;
 	private String nickname;
@@ -11,20 +12,28 @@ public class UserDTO {
 	
 	@Override
 	public String toString() {
-		return "UserDTO [email=" + email + ", password=" + password + ", nickname=" + nickname + "]";
+		return "UserDTO [id=" + id + ", email=" + email + ", password=" + password + ", nickname=" + nickname + "]";
 	}
+
+
 
 	public UserDTO(String email, int password) {
 		this.email = email;
 		this.password = password;
 	}
 
-	public UserDTO(String email, int password, String nickname) {
-		this.email = email;
-		this.password = password;
-		this.nickname = nickname;
+	public int getId() {
+		return id;
 	}
-	
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
 	public String getEmail() {
 		return email;
 	}

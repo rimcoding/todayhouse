@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
     <!-- 구글폰트 적용 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,13 +46,21 @@ height: 180px;
 }
 h3{
 text-align: center;
-
 }
-
 </style>
 <main>
-<h1>오늘의 사진</h1>
-
+<h1>커뮤니티</h1>
+<section class="photo_box">
+<!-- 쿼리문으로 order by desc로 짜서 역순으로 나오게 해서 최신순으로 찾게하고
+c:forEach 조건문을 써서 images 폴더에 저장된 사진이 최신순으로 나오게 해줬다.-->
+<c:forEach var="board" items="${boards}">
+<div class="container">
+<a href="/borderService?cmd=photolist&id=${board.id}">
+<img src="/images/${board.photoImage}" class = "img">
+</a>
+</div>
+</c:forEach>
+</section>
 
 </main>
 <br>
@@ -67,4 +74,3 @@ text-align: center;
 	</footer>
 </body>
 </html>
-

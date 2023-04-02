@@ -6,8 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.User;
 
 import com.house.dao.UserDAO;
+import com.house.dto.UserDTO;
 @WebServlet("/LoginProgram")
 public class LoginProgram extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -21,13 +25,34 @@ public class LoginProgram extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cmd = request.getParameter("cmd");
+		
 		System.out.println("login post동작되는지 확인");
-		request.setCharacterEncoding("UTF-8");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
-		userDAO.login(email, Integer.parseInt(password));
-		System.out.println(email);
-		System.out.println(password);
+		if (cmd.equals("login")) {
+			request.setCharacterEncoding("UTF-8");
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			UserDTO dto = new UserDTO();
+			dto.setEmail(email);
+			dto.setPassword(Integer.parseInt(password));
+			UserDTO user = userDAO.login(dto);
+			System.out.println(user);	
+			if (user != null) {
+				HttpSession session = request.getSession();
+				session.setAttribute("principal", user);
+				session.setAttribute("nick", user.getNickname());
+				response.sendRedirect("/login/loginSuccess.jsp");
+			}else if(user == null) {
+				response.sendRedirect("/login/loginfall.jsp");
+			}
+		}else if(cmd.equals("logout")){
+			System.out.println("1111111111");
+			 HttpSession session = request.getSession();
+			 session.invalidate();
+			 response.sendRedirect("/index2.jsp");
+		}
+		
+		
 	}
 
 }
