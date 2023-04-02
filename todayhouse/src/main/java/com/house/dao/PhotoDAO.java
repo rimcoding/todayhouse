@@ -59,7 +59,9 @@ public class PhotoDAO implements IPhotoDAO {
 				PhotoDTO dto = new PhotoDTO();
 				dto.setId(rs.getInt("p.id"));
 				dto.setPhotoImage(rs.getString("p.photoImage"));
-				dto.setUserId(rs.getInt("userid"));
+				dto.setUserId(rs.getInt("p.userid"));
+				dto.setNickname(rs.getString("u.nickname"));
+				dto.setContent(rs.getString("content"));
 				boards.add(dto);
 			}
 			return boards;
@@ -69,6 +71,48 @@ public class PhotoDAO implements IPhotoDAO {
 		}
 		return null;
 	}
+	@Override
+	public PhotoDTO find(int id) {
+		String query = " SELECT * "
+				+ " FROM photo_board AS p "
+				+ " INNER JOIN user AS u "
+				+ " on p.userId = u.id "
+				+ " WHERE p.id = ? ";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				PhotoDTO dto = new PhotoDTO();
+				dto.setId(rs.getInt(rs.getInt("p.id")));
+				dto.setPhotoImage(rs.getString("p.photoImage"));
+				dto.setContent(rs.getString("p.content"));
+				dto.setReadCount(rs.getInt("p.readCount"));
+				dto.setUserId(rs.getInt("p.userId"));
+				dto.setNickname(rs.getString("u.nickname"));
+				return dto;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public int updateCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
 
 
 }

@@ -14,6 +14,10 @@ public class PhotoDTO {
 	
 	
 	
+	public PhotoDTO(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "PhotoDTO [id=" + id + ", userId=" + userId + ", photoImage=" + photoImage + ", content=" + content

@@ -46,10 +46,9 @@ public class LoginProgram extends HttpServlet {
 				response.sendRedirect("/login/loginfall.jsp");
 			}
 		}else if(cmd.equals("logout")){
-			System.out.println("1111111111");
 			 HttpSession session = request.getSession();
 			 session.invalidate();
-			 response.sendRedirect("/index2.jsp");
+			 response.sendRedirect("/login/logout.jsp");
 		}
 		
 		

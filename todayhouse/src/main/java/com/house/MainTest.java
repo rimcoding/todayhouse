@@ -1,7 +1,9 @@
-package com.house.dao;
+package com.house;
 
 import java.util.List;
 
+import com.house.dao.PhotoDAO;
+import com.house.dao.UserDAO;
 import com.house.dto.PhotoDTO;
 import com.house.dto.UserDTO;
 
@@ -15,6 +17,9 @@ public class MainTest {
 	UserDTO dto = userDAO.login(userdto);
 	System.out.println(dto);
 	PhotoDAO dao = new PhotoDAO();
+	PhotoDTO dto2 = new PhotoDTO();
+	dao.find(35);
+	System.out.println(dto2);
 	}
 	
 }

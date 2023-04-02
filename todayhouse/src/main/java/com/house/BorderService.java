@@ -26,6 +26,7 @@ public class BorderService<E> extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("UTF-8");
 		String cmd = request.getParameter("cmd");
 		HttpSession session = request.getSession();
@@ -33,10 +34,19 @@ public class BorderService<E> extends HttpServlet {
 		if (cmd.equals("index")){
 			List<PhotoDTO> boards = photoDAO.listfind();
 			request.setAttribute("boards", boards);
-			
 			RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
 			dis.forward(request, response);
-			
+			if (cmd.equals("oneclick")) {
+				int id = Integer.parseInt(request.getParameter("id"));
+				System.out.println(id);
+				PhotoDTO dto = photoDAO.find(id);
+				
+					request.setAttribute("dto", dto);
+					RequestDispatcher disRequestDispatcher = request.getRequestDispatcher("border/communuty.jsp");
+					response.sendRedirect("border/communuty.jsp");
+					disRequestDispatcher.forward(request, response);
+				
+				}
 		}
 	
 	}
