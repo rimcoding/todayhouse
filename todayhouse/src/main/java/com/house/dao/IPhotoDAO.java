@@ -6,7 +6,8 @@ import com.house.dto.PhotoDTO;
 
 public interface IPhotoDAO {
 	int save(PhotoDTO dto);
-	List<PhotoDTO> listfind();
+	List<PhotoDTO> listfind4();
+	List<PhotoDTO> listfind12();
 	PhotoDTO find(int id);
 	int updateCount();
 	int delete();

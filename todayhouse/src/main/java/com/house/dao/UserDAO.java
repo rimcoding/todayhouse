@@ -26,7 +26,6 @@ public class UserDAO implements IUserDAO {
 		String query = "  INSERT INTO user(email,password,nickname) "
 				+ "    VALUES "
 				+ " ( ? , ? , ? ) ";
-		System.out.println("사진업로드가 안된다.");
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, email);

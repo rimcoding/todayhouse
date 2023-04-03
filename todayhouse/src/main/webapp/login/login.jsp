@@ -48,7 +48,9 @@ margin-top: 20px;
 	<form action="/LoginProgram?cmd=login" method="post">
 	<div class = "container">
 	<div class = "logo">
+	<a href="/index.jsp">
 	<img alt="" src="/image2/loginlogo.png">
+	</a>
 	</div>
 	<div class = text>
 	<input type = "email" placeholder="이메일" name = "email" id ="email" class="text1">

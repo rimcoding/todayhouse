@@ -43,17 +43,17 @@ public class PhotoDAO implements IPhotoDAO {
 	}
 
 	@Override
-	public List<PhotoDTO> listfind() {
+	public List<PhotoDTO> listfind4() {
 		String query = " SELECT *"
 				+ " FROM photo_board AS p "
 				+ " INNER JOIN user AS u "
 				+ " ON p.userId = u.id "
-				+ " ORDER BY p.createDate DESC LIMIT 0,4;";
+				+ " ORDER BY p.createDate DESC LIMIT 0,5;";
 					
 		try {
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
-			List<PhotoDTO> boards = new ArrayList<>();
+			List<PhotoDTO> boards4 = new ArrayList<>();
 			
 			while(rs.next()) {
 				PhotoDTO dto = new PhotoDTO();
@@ -62,11 +62,10 @@ public class PhotoDAO implements IPhotoDAO {
 				dto.setUserId(rs.getInt("p.userid"));
 				dto.setNickname(rs.getString("u.nickname"));
 				dto.setContent(rs.getString("content"));
-				boards.add(dto);
+				boards4.add(dto);
 			}
-			return boards;
+			return boards4;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -110,6 +109,35 @@ public class PhotoDAO implements IPhotoDAO {
 	public int delete() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<PhotoDTO> listfind12() {
+		String query = " SELECT * "
+				+ " FROM photo_board AS p "
+				+ " INNER JOIN user AS u "
+				+ " ON p.userId = u.id "
+				+ " ORDER BY p.createDate DESC LIMIT 0,12; ";
+		try {
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			List<PhotoDTO> boards12 = new ArrayList<>();
+			while(rs.next()) {
+				PhotoDTO dto = new PhotoDTO();
+				dto.setId(rs.getInt("p.id"));
+				dto.setPhotoImage(rs.getString("p.photoImage"));
+				dto.setUserId(rs.getInt("p.userid"));
+				dto.setNickname(rs.getString("u.nickname"));
+				dto.setContent(rs.getString("p.content"));
+				boards12.add(dto);
+			}
+			return boards12;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 
 	

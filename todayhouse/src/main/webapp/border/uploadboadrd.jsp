@@ -2,9 +2,7 @@
     pageEncoding="UTF-8"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-    <%
-		out.println(session.getAttribute("principal"));    
-    %>
+    <%	out.println(session.getAttribute("principal"));   %>
 <!DOCTYPE html>
 <html>
 <head>

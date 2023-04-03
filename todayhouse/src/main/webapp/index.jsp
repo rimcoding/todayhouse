@@ -63,6 +63,9 @@ margin-left: 60px;
 font-family: 'Nanum Pen Script', cursive;
 font-size: 20px;
 }
+.delete{
+font-size: 12px;
+}
 
 </style>
 <main>
@@ -73,10 +76,13 @@ c:forEach 조건문을 써서 images 폴더에 저장된 사진이 최신순으�
 <c:forEach var="board" items="${boards}">
 <div class="container">
 <div class="nickname">${board.nickname}</div>
-<a href="/borderService?cmd=oneclick&id=${board.id}" onclick="reload();">
+<a href="/border/communuty2.jsp" onclick="reload();">
 <img src="/images/${board.photoImage}" class = "img">
 </a>
 <div class="content">${board.content}</div>
+<form action="/borderService" method="get">
+<div class = "delete"><a href="/border/deleteboard.jsp">삭제하기</a></div>
+</form>
 </div>
 </c:forEach>
 </section>

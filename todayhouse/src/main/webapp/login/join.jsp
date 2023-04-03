@@ -43,7 +43,8 @@ flex-direction: column;
 <body>
 <form action="/JoinProgram" method="post">
 	<div class = "container">
-	<img src="/image2/loginlogo.png">
+	<a href="/index2.jsp">
+	<img src="/image2/loginlogo.png"></a>
 	<div class="form-group">
 	<input type="email" placeholder="이메일을 입력하세요"  name="email" id = "email" class = "text">
 	<input type="password" placeholder="패스워드를 입력하세요"  name="password" id="password" class = "text">

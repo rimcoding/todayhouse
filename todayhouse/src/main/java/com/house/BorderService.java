@@ -32,35 +32,31 @@ public class BorderService<E> extends HttpServlet {
 		HttpSession session = request.getSession();
 		PhotoDAO photoDAO = new PhotoDAO();
 		if (cmd.equals("index")){
-			List<PhotoDTO> boards = photoDAO.listfind();
+			List<PhotoDTO> boards = photoDAO.listfind4();
 			request.setAttribute("boards", boards);
 			RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
 			dis.forward(request, response);
-			if (cmd.equals("oneclick")) {
-				int id = Integer.parseInt(request.getParameter("id"));
-				System.out.println(id);
-				PhotoDTO dto = photoDAO.find(id);
-				
-					request.setAttribute("dto", dto);
-					RequestDispatcher disRequestDispatcher = request.getRequestDispatcher("border/communuty.jsp");
-					response.sendRedirect("border/communuty.jsp");
-					disRequestDispatcher.forward(request, response);
-				
-				}
-		}
+			 if (cmd.equals("delete")) {
+					System.out.println("1111111111111");
+				}		
+		}else if (cmd.equals("oneclick")) {
+			System.out.println("여기는 상세페이지입니다.");
+			List<PhotoDTO> boardss = photoDAO.listfind12();
+			request.setAttribute("boards2", boardss);
+			RequestDispatcher diss = request.getRequestDispatcher("border/communuty.jsp");
+			diss.forward(request, response);
+			}
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("글쓰기");
-		
 		String cmd = request.getParameter("cmd");
 		HttpSession session = request.getSession();
 		PhotoDAO photoDAO = new PhotoDAO();
 		
 			if (cmd.equals("upload")) {
 				// saveFolder 이미지 폴더 경로가 맞아야 저장된다.
-				String saveFolder = "C:\\Users\\yog41\\OneDrive\\Desktop\\project\\todayhouse\\todayhouse\\src\\main\\webapp\\images";
+				String saveFolder = "C:\\Users\\GGG\\Desktop\\todayshous\\todayhouse\\todayhouse\\src\\main\\webapp\\images";
 				String encType = "UTF-8";
 				int maxSize = 5 * 1024 * 1024;
 			

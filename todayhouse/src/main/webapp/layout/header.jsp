@@ -71,7 +71,7 @@ margin-left: 50px;
 </div>
 <ul class = "header-left">
 <li>
-<a href="/border/communuty.jsp">커뮤니티</a>
+<a href="/border/communuty2.jsp">커뮤니티</a>
 </li>
 <li>
 <a href="#">스토어</a>
