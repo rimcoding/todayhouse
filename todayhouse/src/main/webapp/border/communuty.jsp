@@ -82,17 +82,16 @@ font-size: 10px;
 <div class="photo_box">
 <c:forEach var="board" items="${boards2}">
 <div class="container">
-<form action="/borderService/cmd=oneclick" method="get">
 <div class="nickname">${board.nickname}</div>
-<a href="/detailboard.jsp" onclick="reload();">
-<input type =>
+<a href="/borderService?cmd=detail&id=${board.id}">
 <img src="/images/${board.photoImage}" class = "img"></a>
-</form>
+<input type="hidden" value="${board.photoImage}" name = "photoImage">
 <form action="/replyService" method="post">
-<input type ="hidden" name = "uu" value="${sessionScope.principal.id}">
+<input type ="hidden" name = "userInfo" value="${sessionScope.principal.id}">
 <input type="hidden" name = "boardId" value="${board.id}">
+<input type="hidden" name = "nick" value="${sessionScope.principal.nickname}">
 <div class="content">${board.content}</div>
-<input type="text" class="textbox" placeholder="댓글을 달아주세요." name ="rr">
+<input type="text" class="textbox" placeholder="댓글을 달아주세요." name ="contentbox">
 <input type="submit" value="등록" class="replybutton" >
 </form>
 </div>

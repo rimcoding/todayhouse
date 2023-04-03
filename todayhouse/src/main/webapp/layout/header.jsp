@@ -12,7 +12,7 @@
 <style type="text/css">
 .header{
 display: flex;
-width: 1300px;;
+width: 2000px;
 justify-content: center;
 align-items: center;
 padding: 15px 60px 15px 60px;
@@ -61,6 +61,13 @@ font-size: 14px;
 .cart{
 margin-left: 50px;
 }
+.menu_button{
+border: 0;
+outline: 0;
+font-weight: bold;
+font-size: 14px;
+background: #fff;
+}
 </style>
 </head>
 <body>
@@ -71,10 +78,14 @@ margin-left: 50px;
 </div>
 <ul class = "header-left">
 <li>
-<a href="/border/communuty2.jsp">커뮤니티</a>
+<form action="/borderService?cmd=coummunuty" method="post">
+<button class="menu_button">커뮤니티</button>
+</form>
 </li>
 <li>
-<a href="#">스토어</a>
+<form action="/borderService?cmd=coummunuty" method="post">
+<button class="menu_button">스토어</button>
+</form>
 </li>
 </ul>
 <input type="text" placeholder="통합검색" class="text">

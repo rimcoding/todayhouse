@@ -15,7 +15,6 @@ public class MainTest {
 	UserDTO userdto = new UserDTO();
 	PhotoDAO dao = new PhotoDAO();
 	ReplyDAO replyDAO = new ReplyDAO();
-	replyDAO.reply_save(1,1, "fgsdsdfgds");
 	}
 	
 }

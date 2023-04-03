@@ -76,7 +76,7 @@ c:forEach 조건문을 써서 images 폴더에 저장된 사진이 최신순으�
 <c:forEach var="board" items="${boards}">
 <div class="container">
 <div class="nickname">${board.nickname}</div>
-<a href="/border/communuty2.jsp" onclick="reload();">
+<a href="#">
 <img src="/images/${board.photoImage}" class = "img">
 </a>
 <div class="content">${board.content}</div>

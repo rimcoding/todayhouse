@@ -36,7 +36,7 @@ public class LoginProgram extends HttpServlet {
 			dto.setEmail(email);
 			dto.setPassword(Integer.parseInt(password));
 			UserDTO user = userDAO.login(dto);
-			System.out.println(user);	
+			System.out.println(user);
 			if (user != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("principal", user);

@@ -24,15 +24,23 @@ public class ReplyService extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	System.out.println("댓글저장");
+	//System.out.println("댓글저장");
 	request.setCharacterEncoding("UTF-8");
-	String userId = request.getParameter("uu");
+	String userId = request.getParameter("userInfo");
 	String boardId = request.getParameter("boardId");
-	String content = request.getParameter("rr");
+	String content = request.getParameter("contentbox");
+	String nickname = request.getParameter("nick");
+	System.out.println(userId);
+	System.out.println(boardId);
 	System.out.println(content);
-	int result = replydao.reply_save(Integer.parseInt(userId),Integer.parseInt(boardId),content);
+	System.out.println(nickname);
+	int result = replydao.reply_save(Integer.parseInt(userId),Integer.parseInt(boardId),content,nickname);
 	System.out.println(result);
-	response.sendRedirect("border/replysuccess.jsp");
+	if (result == 1) {
+		response.sendRedirect("border/replysuccess.jsp");		
+	}else {
+		response.sendRedirect("border/replyfall.jsp");
+	}
 	}
 
 }

@@ -5,8 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+alert("작성을 실패하였습니다.");
+location.href="/border/communuty2.jsp"
+</script>
 </head>
 <body>
-<h1>상세페이지 입니다.</h1>
+
 </body>
 </html>
