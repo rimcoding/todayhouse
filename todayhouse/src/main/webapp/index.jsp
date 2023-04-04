@@ -80,9 +80,6 @@ c:forEach 조건문을 써서 images 폴더에 저장된 사진이 최신순으�
 <img src="/images/${board.photoImage}" class = "img">
 </a>
 <div class="content">${board.content}</div>
-<form action="/borderService" method="get">
-<div class = "delete"><a href="/border/deleteboard.jsp">삭제하기</a></div>
-</form>
 </div>
 </c:forEach>
 </section>

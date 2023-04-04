@@ -70,7 +70,7 @@ public class BorderService<E> extends HttpServlet {
 		
 			if (cmd.equals("upload")) {
 				// saveFolder 이미지 폴더 경로가 맞아야 저장된다.
-				String saveFolder = "C:\\Users\\GGG\\Desktop\\todayshous\\todayhouse\\todayhouse\\src\\main\\webapp\\images";
+				String saveFolder = request.getSession().getServletContext().getRealPath("images");
 				String encType = "UTF-8";
 				int maxSize = 5 * 1024 * 1024;
 			
