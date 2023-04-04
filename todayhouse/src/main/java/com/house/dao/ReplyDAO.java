@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.house.dto.ReplyDTO;
 import com.house.utils.DbHelper;
@@ -43,7 +45,7 @@ public class ReplyDAO implements IReplyDAO {
 	}
 
 	@Override
-	public ReplyDTO reply_find(int boardid) {
+	public List<ReplyDTO> reply_find(int boardid) {
 		
 		
 		String query = " SELECT * FROM reply "
@@ -53,6 +55,7 @@ public class ReplyDAO implements IReplyDAO {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, boardid);
 			rs = pstmt.executeQuery();
+			List<ReplyDTO> replys = new ArrayList<>();
 		while(rs.next()) {
 			ReplyDTO dto = new ReplyDTO();
 			dto.setId(rs.getInt("id"));
@@ -60,8 +63,9 @@ public class ReplyDAO implements IReplyDAO {
 			dto.setBoardid(rs.getInt("boardid"));
 			dto.setNickname(rs.getString("nickname"));
 			dto.setContent(rs.getString("content"));
-			return dto;
+			replys.add(dto);
 		}
+		return replys;
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -69,6 +73,41 @@ public class ReplyDAO implements IReplyDAO {
 		
 		return null;
 		
+	}
+
+	@Override
+	public int delete(int id, int userid) {
+		int result = 0;
+		String query= " DELETE FROM reply "
+				+ 	  " WHERE id = ? AND userid = ? ";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, id);
+			pstmt.setInt(2, userid);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
+
+	@Override
+	public int update(String content, int userid,int id) {
+		int result = 0;
+		String query = "  UPDATE reply "
+				+ "    	  set content = ? "
+				+ "    	  WHERE userid = ? AND id = ? ";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, content);
+			pstmt.setInt(2, userid);
+			pstmt.setInt(3, id);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 }

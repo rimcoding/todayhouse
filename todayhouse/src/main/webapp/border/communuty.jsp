@@ -86,13 +86,13 @@ font-size: 10px;
 <a href="/borderService?cmd=detail&id=${board.id}">
 <img src="/images/${board.photoImage}" class = "img"></a>
 <input type="hidden" value="${board.photoImage}" name = "photoImage">
-<form action="/replyService" method="post">
+<form action="/replyService?cmd=replysave" method="post">
 <input type ="hidden" name = "userInfo" value="${sessionScope.principal.id}">
 <input type="hidden" name = "boardId" value="${board.id}">
 <input type="hidden" name = "nick" value="${sessionScope.principal.nickname}">
 <div class="content">${board.content}</div>
 <input type="text" class="textbox" placeholder="댓글을 달아주세요." name ="contentbox">
-<input type="submit" value="등록" class="replybutton" >
+<input type="submit" value="등록" class="replybutton">
 </form>
 </div>
 </c:forEach>

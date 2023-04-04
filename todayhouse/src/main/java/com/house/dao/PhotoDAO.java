@@ -101,14 +101,24 @@ public class PhotoDAO implements IPhotoDAO {
 
 	@Override
 	public int updateCount() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int delete() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete(int userid,String photoImage) {
+		int result = 0;
+		String query = " DELETE FROM photo_board "
+				+ 	   " where userid = ? AND photoImage = ? ";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, userid);
+			pstmt.setString(2, photoImage);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.house;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -29,6 +30,8 @@ public class BorderService<E> extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");   
+		response.setCharacterEncoding("UTF-8");
 		String cmd = request.getParameter("cmd");
 		HttpSession session = request.getSession();
 		PhotoDAO photoDAO = new PhotoDAO();
@@ -40,19 +43,19 @@ public class BorderService<E> extends HttpServlet {
 			dis.forward(request, response);
 					
 		}else if (cmd.equals("communuty")) {
+			
 			List<PhotoDTO> boardss = photoDAO.listfind12();
 			request.setAttribute("boards2", boardss);
 			RequestDispatcher diss = request.getRequestDispatcher("border/communuty.jsp");
 			diss.forward(request, response);
-			}else if(cmd.equals("detail")) {
+		}else if(cmd.equals("detail")) {
 				int id = Integer.parseInt(request.getParameter("id"));
 				System.out.println(id);
 				PhotoDTO dto = photoDAO.find(id);
-				ReplyDTO reply = replyDAO.reply_find(id);
-				System.out.println(dto);
-				System.out.println(reply);
+				List<ReplyDTO> replyList = replyDAO.reply_find(id);
+				System.out.println(replyList);
 				request.setAttribute("dto", dto);
-				request.setAttribute("reply", reply);
+				request.setAttribute("replyList", replyList);
 				RequestDispatcher dis = request.getRequestDispatcher("border/detailboard.jsp");
 				dis.forward(request, response);
 			}
@@ -67,7 +70,7 @@ public class BorderService<E> extends HttpServlet {
 		
 			if (cmd.equals("upload")) {
 				// saveFolder 이미지 폴더 경로가 맞아야 저장된다.
-				String saveFolder = "C:\\Users\\yog41\\Desktop\\todayhouse\\todayhouse\\todayhouse\\src\\main\\webapp\\images";
+				String saveFolder = "C:\\Users\\GGG\\Desktop\\todayshous\\todayhouse\\todayhouse\\src\\main\\webapp\\images";
 				String encType = "UTF-8";
 				int maxSize = 5 * 1024 * 1024;
 			
@@ -109,6 +112,25 @@ public class BorderService<E> extends HttpServlet {
 				}else {
 					response.sendRedirect("border/writefall.jsp");
 				}
+			}else if (cmd.equals("delete")) {
+				request.setCharacterEncoding("UTF-8");
+				String userId = request.getParameter("userId");
+				String photoImage = request.getParameter("photoImage");
+				int result = photoDAO.delete(Integer.parseInt(userId),photoImage);
+				 if (result == 0) {
+					 response.setContentType("text/html; charset=UTF-8");                 
+					 PrintWriter writer = response.getWriter();                 
+					 writer.println("<script>alert('본인이 작성한지 닉네임을 비교해보세요'); location.href='border/communuty2.jsp';</script>");                 
+					 writer.close();
+				}else {
+					 response.setContentType("text/html; charset=UTF-8");                 
+					 PrintWriter writer = response.getWriter();                 
+					 writer.println("<script>alert('삭제되었습니다.'); location.href='border/communuty2.jsp';</script>");                 
+					 writer.close();
+				}
+				System.out.println(result);
+			} {
+				
 			}
 			
 		

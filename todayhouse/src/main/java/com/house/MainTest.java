@@ -6,6 +6,7 @@ import com.house.dao.PhotoDAO;
 import com.house.dao.ReplyDAO;
 import com.house.dao.UserDAO;
 import com.house.dto.PhotoDTO;
+import com.house.dto.ReplyDTO;
 import com.house.dto.UserDTO;
 
 public class MainTest {
@@ -15,6 +16,10 @@ public class MainTest {
 	UserDTO userdto = new UserDTO();
 	PhotoDAO dao = new PhotoDAO();
 	ReplyDAO replyDAO = new ReplyDAO();
+	List<ReplyDTO> reply = replyDAO.reply_find(1);
+	
+	System.out.println(reply);
 	}
+	
 	
 }

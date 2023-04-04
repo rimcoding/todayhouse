@@ -10,5 +10,5 @@ public interface IPhotoDAO {
 	List<PhotoDTO> listfind12();
 	PhotoDTO find(int id);
 	int updateCount();
-	int delete();
+	int delete(int userid,String photoImage);
 }

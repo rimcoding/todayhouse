@@ -12,7 +12,7 @@
 <style type="text/css">
 .header{
 display: flex;
-width: 2000px;
+width: 1600px;
 justify-content: center;
 align-items: center;
 padding: 15px 60px 15px 60px;

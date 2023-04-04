@@ -14,6 +14,8 @@ public class ReplyDTO {
 				+ ", content=" + content + "]";
 	}
 	
+	public ReplyDTO() {
+	}
 	
 	public int getId() {
 		return id;
