@@ -95,9 +95,9 @@ align-items: center;
 </div>
 <div>
 	<div class="filebox">
-    <input class="upload-name" value="첨부파일" placeholder="첨부파일" name="photo">
+    <input class="upload-name" value="첨부파일" placeholder="첨부파일" >
     <label for="file">파일찾기</label> 
-    <input type="file" id="file">
+    <input type="file" id="file" name="photo">
 	</div>
 	</div>
 	<button type = "submit" class="button">올리기</button>

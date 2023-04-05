@@ -72,6 +72,7 @@ public class PhotoDAO implements IPhotoDAO {
 	}
 	@Override
 	public PhotoDTO find(int id) {
+		PhotoDTO dto = null;
 		String query = " SELECT * "
 				+ " FROM photo_board AS p "
 				+ " INNER JOIN user AS u "
@@ -83,20 +84,19 @@ public class PhotoDAO implements IPhotoDAO {
 			pstmt.setInt(1, id);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				PhotoDTO dto = new PhotoDTO();
-				dto.setId(rs.getInt(rs.getInt("p.id")));
+				dto = new PhotoDTO();
+				dto.setId(rs.getInt("p.id"));
 				dto.setPhotoImage(rs.getString("p.photoImage"));
 				dto.setContent(rs.getString("p.content"));
 				dto.setReadCount(rs.getInt("p.readCount"));
 				dto.setUserId(rs.getInt("p.userId"));
 				dto.setNickname(rs.getString("u.nickname"));
-				return dto;
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return dto;
 	}
 
 	@Override
@@ -123,6 +123,7 @@ public class PhotoDAO implements IPhotoDAO {
 
 	@Override
 	public List<PhotoDTO> listfind12() {
+		PhotoDTO dto = new PhotoDTO();
 		String query = " SELECT * "
 				+ " FROM photo_board AS p "
 				+ " INNER JOIN user AS u "
@@ -133,7 +134,7 @@ public class PhotoDAO implements IPhotoDAO {
 			rs = pstmt.executeQuery();
 			List<PhotoDTO> boards12 = new ArrayList<>();
 			while(rs.next()) {
-				PhotoDTO dto = new PhotoDTO();
+				dto = new PhotoDTO();
 				dto.setId(rs.getInt("p.id"));
 				dto.setPhotoImage(rs.getString("p.photoImage"));
 				dto.setUserId(rs.getInt("p.userid"));

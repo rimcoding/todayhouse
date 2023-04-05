@@ -17,8 +17,8 @@ public class MainTest {
 	PhotoDAO dao = new PhotoDAO();
 	ReplyDAO replyDAO = new ReplyDAO();
 	List<ReplyDTO> reply = replyDAO.reply_find(1);
-	
-	System.out.println(reply);
+	PhotoDTO dto = dao.find(4);
+	System.out.println(dto);
 	}
 	
 	

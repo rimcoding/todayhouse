@@ -53,8 +53,8 @@ public class BorderService<E> extends HttpServlet {
 				System.out.println(id);
 				PhotoDTO dto = photoDAO.find(id);
 				List<ReplyDTO> replyList = replyDAO.reply_find(id);
-				System.out.println(replyList);
 				request.setAttribute("dto", dto);
+				System.out.println("dto"+dto);
 				request.setAttribute("replyList", replyList);
 				RequestDispatcher dis = request.getRequestDispatcher("border/detailboard.jsp");
 				dis.forward(request, response);
@@ -98,7 +98,8 @@ public class BorderService<E> extends HttpServlet {
 						response.sendRedirect("index2.jsp");
 					}
 				
-			}else if (cmd.equals("uploadForm")) {
+			}
+			else if (cmd.equals("uploadForm")) {
 				UserDTO principal = (UserDTO)session.getAttribute("principal");
 				if (principal != null) {
 					response.sendRedirect("border/uploadboadrd.jsp");
